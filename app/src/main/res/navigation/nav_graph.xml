@@ -30,5 +30,9 @@
         <action
             android:id="@+id/action_editNoteFragment_to_home2"
             app:destination="@id/home2" />
+        <argument
+            android:name="tarea"
+            app:argType="com.example.todolist_practicapmdm_persistencia.model.Tarea"
+            app:nullable="true"/>
     </fragment>
 </navigation>
