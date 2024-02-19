@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id ("androidx.navigation.safeargs")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -54,6 +55,7 @@ dependencies {
     val roomVersion = "2.6.1"
     implementation ("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
+
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation ("androidx.room:room-ktx:$roomVersion")

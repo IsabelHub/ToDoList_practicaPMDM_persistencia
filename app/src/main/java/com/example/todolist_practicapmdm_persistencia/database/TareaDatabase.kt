@@ -7,18 +7,18 @@ import androidx.room.RoomDatabase
 import com.example.todolist_practicapmdm_persistencia.model.Tarea
 
 @Database(entities = [Tarea::class], version = 1)
-abstract class TareaDatabase: RoomDataBase() {
+abstract class TareaDatabase: RoomDatabase() {
     abstract fun getTareaDao(): TareaDao
     companion object{
         @Volatile
-        private var instance = TareaDatabase? = null
+        private var instance: TareaDatabase? = null
         private var LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?:
         synchronized(LOCK){
             instance ?:
             createDatabase(context).also{
-                instance.it
+                instance = it
             }
         }
         private fun createDatabase(context: Context) =
@@ -31,3 +31,8 @@ abstract class TareaDatabase: RoomDataBase() {
 
     }
 }
+
+
+
+
+
