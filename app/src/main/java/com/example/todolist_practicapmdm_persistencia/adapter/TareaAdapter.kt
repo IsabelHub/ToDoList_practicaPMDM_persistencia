@@ -41,8 +41,8 @@ class TareaAdapter : RecyclerView.Adapter<TareaAdapter.TareaViewHolder>() {
     override fun onBindViewHolder(holder: TareaViewHolder, position: Int) {
         val currentTarea = differ.currentList[position]
 
-        holder.itemBinding.noteTitle.text = currentTarea.nombreAsignatura
-        holder.itemBinding.noteDesc.text = currentTarea.tareaDescripcion
+        holder.itemBinding.tareaTitle.text = currentTarea.nombreAsignatura
+        holder.itemBinding.TareaDesc.text = currentTarea.tareaDescripcion
 
         holder.itemView.setOnClickListener{
             val direction = HomeDirections.actionHome2ToEditNoteFragment(currentTarea)
