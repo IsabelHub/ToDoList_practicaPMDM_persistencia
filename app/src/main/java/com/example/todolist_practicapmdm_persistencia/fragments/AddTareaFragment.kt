@@ -53,9 +53,9 @@ class AddTareaFragment : Fragment(R.layout.fragment_add_tarea), MenuProvider{
 
         if(nombreAsignatura.isNotEmpty()){
             val tarea = Tarea(0, nombreAsignatura, tareaDescripcion)
-            tareasViewModel.addNote(tarea)
+            tareasViewModel.addTarea(tarea)
 
-            Toast.makeText(addTareaView.context, "Nota Guardada", Toast.LENGTH_SHORT).show()
+            Toast.makeText(addTareaView.context, "Tarea Guardada", Toast.LENGTH_SHORT).show()
             view.findNavController().popBackStack(R.id.home2, false)
         } else {
             Toast.makeText(addTareaView.context, "Por favor, introduce el nombre de la asignatura", Toast.LENGTH_SHORT).show()

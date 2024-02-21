@@ -58,8 +58,8 @@ class EditTareaFragment : Fragment(R.layout.fragment_edit_tarea),MenuProvider {
             val noteDesc = binding.editNoteDesc.text.toString().trim()
 
             if(noteTitle.isNotEmpty()){
-                val note = Tarea(tareaActual.id, noteTitle, noteDesc)
-                tareasViewModel.updateNote(note)
+                val tarea = Tarea(tareaActual.id, noteTitle, noteDesc)
+                tareasViewModel.updateTarea(tarea)
                 view.findNavController().popBackStack(R.id.home2, false)
 
             }else{

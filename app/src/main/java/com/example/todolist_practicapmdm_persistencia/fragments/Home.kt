@@ -90,17 +90,17 @@ class Home : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, M
         }
 
         activity?.let {
-            tareasViewModel.getAllNotes().observe(viewLifecycleOwner){ note ->
+            tareasViewModel.getAllTareas().observe(viewLifecycleOwner){ note ->
                 tareaAdapter. differ.submitList(note)
                 updateUI(note)
             }
         }
     }
 
-    private fun searchNote(query: String?){
+    private fun searchTarea(query: String?){
         val searchQuery = "%$query"
 
-        tareasViewModel.searchNote(searchQuery).observe(this) {list ->
+        tareasViewModel.searchTarea(searchQuery).observe(this) {list ->
             tareaAdapter.differ.submitList(list)
         }
     }
@@ -116,7 +116,7 @@ class Home : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, M
 
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null){
-            searchNote(newText)
+            searchTarea(newText)
         }
         return true
     }
