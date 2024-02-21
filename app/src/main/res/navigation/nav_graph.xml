@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="com.example.todolist_practicapmdm_persistencia.fragments.AddNoteFragment"
+        android:name="com.example.todolist_practicapmdm_persistencia.fragments.AddTareaFragment"
         android:label="AddNoteFragment" >
         <action
             android:id="@+id/action_addNoteFragment_to_home2"
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/editNoteFragment"
-        android:name="com.example.todolist_practicapmdm_persistencia.fragments.EditNoteFragment"
+        android:name="com.example.todolist_practicapmdm_persistencia.fragments.EditTareaFragment"
         android:label="EditNoteFragment" >
         <action
             android:id="@+id/action_editNoteFragment_to_home2"
