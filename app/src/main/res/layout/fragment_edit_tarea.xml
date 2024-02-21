@@ -12,7 +12,7 @@
         tools:context=".UpdateNoteFragment">
 
         <TextView
-            android:id="@+id/editNoteHeading"
+            android:id="@+id/editTareaHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -24,20 +24,20 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/editNoteTitle"
+            android:id="@+id/editTareaTitle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="Introduce el nombre de la asignatura"
             android:padding="12dp"
             android:textSize="20sp"
-            android:layout_below="@id/editNoteHeading"
+            android:layout_below="@id/editTareaHeading"
             android:background="@drawable/pink_border"
             android:layout_marginTop="16dp"
             android:maxLines="1"
             android:fontFamily="@font/poppins"/>
 
         <EditText
-            android:id="@+id/editNoteDesc"
+            android:id="@+id/editTareaDesc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Introduce la tarea"
@@ -46,11 +46,11 @@
             android:textSize="18sp"
             android:fontFamily="@font/poppins"
             android:background="@drawable/pink_border"
-            android:layout_below="@id/editNoteTitle"
+            android:layout_below="@id/editTareaTitle"
             android:layout_marginTop="12dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/editNoteFab"
+            android:id="@+id/editTareaFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"

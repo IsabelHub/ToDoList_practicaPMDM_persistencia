@@ -10,7 +10,7 @@
         tools:context=".HomeFragment">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addNoteFab"
+            android:id="@+id/addTareaFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/emptyNotesImage"
+            android:id="@+id/emptyTareaImage"
             android:layout_width="4dp"
             android:layout_height="4dp"
             android:src="@drawable/add_icono"
