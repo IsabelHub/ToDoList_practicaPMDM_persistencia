@@ -40,11 +40,7 @@ class Home : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, M
         // Inflate the layout for this fragment
         homeBinding = FragmentHomeBinding.inflate(inflater, container, false)
         return  binding.root
-
-
     }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -113,16 +109,16 @@ class Home : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, M
         return false
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        homeBinding = null
+    }
+
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null){
             searchNote(newText)
         }
         return true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        homeBinding = null
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

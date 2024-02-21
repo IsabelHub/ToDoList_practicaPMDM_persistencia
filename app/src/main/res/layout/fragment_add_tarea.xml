@@ -18,13 +18,13 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
-            android:text="Añade asignatura."
+            android:text="Añade Tarea Asignatura: "
             android:textColor="@color/red"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/addNoteTitle"
+            android:id="@+id/addAsignaturaNombre"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="Introduce nombre asignatura"
@@ -37,7 +37,7 @@
             android:fontFamily="@font/poppins"/>
 
         <EditText
-            android:id="@+id/addNoteDesc"
+            android:id="@+id/addTareaDescripcion"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Añade la tarea de la asignatura"
@@ -46,7 +46,7 @@
             android:textSize="18sp"
             android:fontFamily="@font/poppins"
             android:background="@drawable/pink_border"
-            android:layout_below="@id/addNoteTitle"
+            android:layout_below="@id/addAsignaturaNombre"
             android:layout_marginTop="12dp" />
 
     </RelativeLayout>
