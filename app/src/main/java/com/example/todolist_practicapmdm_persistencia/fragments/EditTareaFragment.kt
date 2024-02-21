@@ -50,12 +50,12 @@ class EditTareaFragment : Fragment(R.layout.fragment_edit_tarea),MenuProvider {
         tareasViewModel = (activity as MainActivity).tareaViewModel
         tareaActual = args.tarea!!
 
-        binding.editNoteTitle.setText(tareaActual.nombreAsignatura)
-        binding.editNoteDesc.setText(tareaActual.tareaDescripcion)
+        binding.editTareaTitle.setText(tareaActual.nombreAsignatura)
+        binding.editTareaDesc.setText(tareaActual.tareaDescripcion)
 
-        binding.editNoteFab.setOnClickListener {
-            val noteTitle = binding.editNoteTitle.text.toString().trim()
-            val noteDesc = binding.editNoteDesc.text.toString().trim()
+        binding.editTareaFab.setOnClickListener {
+            val noteTitle = binding.editTareaTitle.text.toString().trim()
+            val noteDesc = binding.editTareaDesc.text.toString().trim()
 
             if(noteTitle.isNotEmpty()){
                 val tarea = Tarea(tareaActual.id, noteTitle, noteDesc)
