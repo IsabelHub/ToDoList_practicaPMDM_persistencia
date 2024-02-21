@@ -50,7 +50,7 @@ class Home : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, M
         tareasViewModel = (activity as MainActivity).tareaViewModel
         setupHomeRecyclerView()
 
-        binding.addNoteFab.setOnClickListener{
+        binding.addTareaFab.setOnClickListener{
             it.findNavController().navigate(R.id.action_home2_to_addNoteFragment)
         }
 
@@ -73,10 +73,10 @@ class Home : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, M
     private fun updateUI(note: List<Tarea>?){
         if (note != null){
             if (note.isNotEmpty()){
-                binding.emptyNotesImage.visibility = View.GONE
+                binding.emptyTareaImage.visibility = View.GONE
                 binding.homeRecyclerView.visibility = View.VISIBLE
             }else{
-                binding.emptyNotesImage.visibility = View.VISIBLE
+                binding.emptyTareaImage.visibility = View.VISIBLE
                 binding.homeRecyclerView.visibility = View.GONE
             }
         }
