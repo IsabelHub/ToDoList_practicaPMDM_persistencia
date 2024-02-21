@@ -20,7 +20,7 @@ interface TareaDao {
     suspend fun deleteTarea(tarea: Tarea)
 
     @Query("SELECT * FROM TAREAS ORDER BY id DESC")
-    fun getAllNotes(): LiveData<List<Tarea>>
+    fun getAllTareas(): LiveData<List<Tarea>>
 
     @Query("SELECT * FROM TAREAS WHERE nombreAsignatura LIKE :query OR tareaDescripcion LIKE :query")
     fun searchTarea(query: String?): LiveData<List<Tarea>>

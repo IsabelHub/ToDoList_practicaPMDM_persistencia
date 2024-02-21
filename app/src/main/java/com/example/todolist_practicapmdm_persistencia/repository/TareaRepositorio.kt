@@ -8,6 +8,6 @@ class TareaRepositorio (private val db: TareaDatabase) {
     suspend fun updateTarea(tarea: Tarea) = db.getTareaDao().updateTarea(tarea)
     suspend fun deleteTarea(tarea: Tarea) = db.getTareaDao().deleteTarea(tarea)
 
-    fun getAllTareas() = db.getTareaDao().getAllNotes()
+    fun getAllTareas() = db.getTareaDao().getAllTareas()
     fun searchTareas(query: String?) = db.getTareaDao().searchTarea(query)
 }
