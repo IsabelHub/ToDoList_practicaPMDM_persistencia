@@ -7,23 +7,23 @@ import com.example.todolist_practicapmdm_persistencia.model.Tarea
 import com.example.todolist_practicapmdm_persistencia.repository.TareaRepositorio
 import kotlinx.coroutines.launch
 
-class TareaViewModel(app: Application, private val noteRepository: TareaRepositorio): AndroidViewModel(app) {
-    fun addNote(tarea: Tarea) =
+class TareaViewModel(app: Application, private val tareaRepository: TareaRepositorio): AndroidViewModel(app) {
+    fun addTarea(tarea: Tarea) =
         viewModelScope.launch {
-            noteRepository.insertTarea(tarea)
+            tareaRepository.insertTarea(tarea)
         }
 
-    fun deleteNote(tarea: Tarea) =
+    fun deleteTarea(tarea: Tarea) =
         viewModelScope.launch {
-            noteRepository.deleteTarea(tarea)
+            tareaRepository.deleteTarea(tarea)
         }
 
-    fun updateNote(tarea: Tarea) =
+    fun updateTarea(tarea: Tarea) =
         viewModelScope.launch {
-            noteRepository.updateTarea(tarea)
+            tareaRepository.updateTarea(tarea)
         }
 
-    fun getAllNotes() =noteRepository.getAllTareas()
+    fun getAllTareas() =tareaRepository.getAllTareas()
 
-    fun searchNote(query: String?) = noteRepository.searchTareas(query)
+    fun searchTarea(query: String?) = tareaRepository.searchTareas(query)
 }

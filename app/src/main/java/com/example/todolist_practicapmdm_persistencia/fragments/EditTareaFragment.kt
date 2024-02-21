@@ -67,12 +67,12 @@ class EditTareaFragment : Fragment(R.layout.fragment_edit_tarea),MenuProvider {
             }
         }
     }
-    private fun deleteNote(){
+    private fun deleteTarea(){
         AlertDialog.Builder(activity).apply {
             setTitle("Borrar tarea")
             setMessage("¿Quieres borrar esta tarea?")
             setPositiveButton("Borrar"){_,_ ->
-                tareasViewModel.deleteNote(tareaActual)
+                tareasViewModel.deleteTarea(tareaActual)
                 Toast.makeText(context, "Tarea eliminada", Toast.LENGTH_SHORT).show()
                 view?.findNavController()?.popBackStack(R.id.home2, false)
             }
@@ -82,7 +82,7 @@ class EditTareaFragment : Fragment(R.layout.fragment_edit_tarea),MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
             R.id.deleteMenu -> {
-                deleteNote()
+                deleteTarea()
                 true
             } else -> false
         }
