@@ -1,60 +1,100 @@
 package com.example.todolist_practicapmdm_persistencia.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.todolist_practicapmdm_persistencia.MainActivity
 import com.example.todolist_practicapmdm_persistencia.R
+import com.example.todolist_practicapmdm_persistencia.databinding.FragmentEditTareaBinding
+import com.example.todolist_practicapmdm_persistencia.model.Tarea
+import com.example.todolist_practicapmdm_persistencia.viewmodel.TareaViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EditTareaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class EditTareaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class EditTareaFragment : Fragment(R.layout.fragment_edit_tarea),MenuProvider {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var editTareaBinding: FragmentEditTareaBinding? = null
+    private val binding get() = editTareaBinding!!
+
+    private lateinit var tareasViewModel: TareaViewModel
+    private lateinit var tareaActual: Tarea
+
+    private val args: EditTareaFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_tarea, container, false)
+    editTareaBinding = FragmentEditTareaBinding.inflate(inflater,container,false)
+    return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditNoteFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditTareaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        tareasViewModel = (activity as MainActivity).tareaViewModel
+        tareaActual = args.tarea!!
+
+        binding.editNoteTitle.setText(tareaActual.nombreAsignatura)
+        binding.editNoteDesc.setText(tareaActual.tareaDescripcion)
+
+        binding.editNoteFab.setOnClickListener {
+            val noteTitle = binding.editNoteTitle.text.toString().trim()
+            val noteDesc = binding.editNoteDesc.text.toString().trim()
+
+            if(noteTitle.isNotEmpty()){
+                val note = Tarea(tareaActual.id, noteTitle, noteDesc)
+                tareasViewModel.updateNote(note)
+                view.findNavController().popBackStack(R.id.home2, false)
+
+            }else{
+                Toast.makeText(context, "Por favor, Introduce el tÍtulo de la nota", Toast.LENGTH_SHORT).show()
             }
+        }
     }
+    private fun deleteNote(){
+        AlertDialog.Builder(activity).apply {
+            setTitle("Borrar nota")
+            setMessage("¿Quieres borrar esta nota?")
+            setPositiveButton("Borrar"){_,_ ->
+                tareasViewModel.deleteNote(tareaActual)
+                Toast.makeText(context, "Nota eliminada", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.popBackStack(R.id.home2, false)
+            }
+            setNegativeButton("Cancelar", null)
+        }.create().show()
+    }
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+            R.id.deleteMenu -> {
+                deleteNote()
+                true
+            } else -> false
+        }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        editTareaBinding = null
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menu.clear()
+        menuInflater.inflate(R.menu.editar_menu, menu)
+    }
+
 }
