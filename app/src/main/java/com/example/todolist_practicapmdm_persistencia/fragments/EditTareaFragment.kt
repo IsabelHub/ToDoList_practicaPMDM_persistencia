@@ -63,17 +63,17 @@ class EditTareaFragment : Fragment(R.layout.fragment_edit_tarea),MenuProvider {
                 view.findNavController().popBackStack(R.id.home2, false)
 
             }else{
-                Toast.makeText(context, "Por favor, Introduce el tÍtulo de la nota", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Por favor, Introduce el nombre de la asignatura", Toast.LENGTH_SHORT).show()
             }
         }
     }
     private fun deleteNote(){
         AlertDialog.Builder(activity).apply {
-            setTitle("Borrar nota")
-            setMessage("¿Quieres borrar esta nota?")
+            setTitle("Borrar tarea")
+            setMessage("¿Quieres borrar esta tarea?")
             setPositiveButton("Borrar"){_,_ ->
                 tareasViewModel.deleteNote(tareaActual)
-                Toast.makeText(context, "Nota eliminada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Tarea eliminada", Toast.LENGTH_SHORT).show()
                 view?.findNavController()?.popBackStack(R.id.home2, false)
             }
             setNegativeButton("Cancelar", null)
