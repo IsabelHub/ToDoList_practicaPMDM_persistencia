@@ -35,9 +35,9 @@
 
         <ImageView
             android:id="@+id/emptyTareaImage"
-            android:layout_width="4dp"
-            android:layout_height="4dp"
-            android:src="@drawable/imagen1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/imagen_notas"
             android:visibility="gone"
             tools:ignore="MissingConstraints" />
 
@@ -45,9 +45,11 @@
             android:id="@+id/swDarkMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="667dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="28dp"
             android:text="Modo Oscuro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

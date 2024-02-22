@@ -59,20 +59,20 @@ class Home : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, M
             if (isChecked) {
                 // Habilitar el modo oscuro
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                modoNoche.setText("Light")
+                modoNoche.setText("Modo Claro")
             } else {
                 // Habilitar el modo claro
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                modoNoche.setText("Dark")
+                modoNoche.setText("Modo Oscuro")
             }
         }
     }
 
 
 
-    private fun updateUI(note: List<Tarea>?){
-        if (note != null){
-            if (note.isNotEmpty()){
+    private fun updateUI(tarea: List<Tarea>?){
+        if (tarea != null){
+            if (tarea.isNotEmpty()){
                 binding.emptyTareaImage.visibility = View.GONE
                 binding.homeRecyclerView.visibility = View.VISIBLE
             }else{
@@ -84,15 +84,15 @@ class Home : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, M
     private fun setupHomeRecyclerView(){
         tareaAdapter = TareaAdapter()
         binding.homeRecyclerView.apply {
-            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
             setHasFixedSize(true)
             adapter = tareaAdapter
         }
 
         activity?.let {
-            tareasViewModel.getAllTareas().observe(viewLifecycleOwner){ note ->
-                tareaAdapter. differ.submitList(note)
-                updateUI(note)
+            tareasViewModel.getAllTareas().observe(viewLifecycleOwner){ tarea ->
+                tareaAdapter. differ.submitList(tarea)
+                updateUI(tarea)
             }
         }
     }
