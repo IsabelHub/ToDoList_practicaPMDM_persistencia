@@ -97,4 +97,6 @@ class EditTareaFragment : Fragment(R.layout.fragment_edit_tarea),MenuProvider {
         menuInflater.inflate(R.menu.editar_menu, menu)
     }
 
+
+
 }

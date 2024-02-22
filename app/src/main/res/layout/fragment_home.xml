@@ -37,7 +37,7 @@
             android:id="@+id/emptyTareaImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/imagen_notas"
+            android:src="@drawable/imagen3"
             android:visibility="gone"
             tools:ignore="MissingConstraints" />
 

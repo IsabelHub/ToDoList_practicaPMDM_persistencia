@@ -47,6 +47,7 @@ class AddTareaFragment : Fragment(R.layout.fragment_add_tarea), MenuProvider{
         addTareaView=view
     }
 
+
     private fun saveTarea(view: View){
         val nombreAsignatura = binding.addAsignaturaNombre.text.toString().trim()
         val tareaDescripcion = binding.addTareaDescripcion.text.toString().trim()
@@ -81,6 +82,7 @@ class AddTareaFragment : Fragment(R.layout.fragment_add_tarea), MenuProvider{
         super.onDestroy()
         addTareaBinding = null
     }
+
 
 
 }
