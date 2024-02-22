@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.todolist_practicapmdm_persistencia.repository.TareaRepositorio
 
-class TareaViewModelFactory (val app: Application, private val noteRepository: TareaRepositorio) : ViewModelProvider.Factory {
+class TareaViewModelFactory (val app: Application, private val tareaRepository: TareaRepositorio) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return TareaViewModel(app, noteRepository) as T
+        return TareaViewModel(app, tareaRepository) as T
     }
 
 

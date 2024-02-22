@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         setupViewModel()
     }
     private fun setupViewModel(){
-        val noteRepository = TareaRepositorio(TareaDatabase(this))
-        val viewModelProviderFactory = TareaViewModelFactory(application , noteRepository)
+        val tareaRepository = TareaRepositorio(TareaDatabase(this))
+        val viewModelProviderFactory = TareaViewModelFactory(application , tareaRepository)
        tareaViewModel = ViewModelProvider(this, viewModelProviderFactory)[TareaViewModel::class.java]
     }
 }
