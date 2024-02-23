@@ -52,15 +52,16 @@ class AddTareaFragment : Fragment(R.layout.fragment_add_tarea), MenuProvider{
         val nombreAsignatura = binding.addAsignaturaNombre.text.toString().trim()
         val tareaDescripcion = binding.addTareaDescripcion.text.toString().trim()
 
-        if(nombreAsignatura.isNotEmpty()){
+        if(nombreAsignatura.isNotEmpty()&&tareaDescripcion.isNotEmpty()){
             val tarea = Tarea(0, nombreAsignatura, tareaDescripcion)
             tareasViewModel.addTarea(tarea)
 
             Toast.makeText(addTareaView.context, "Tarea Guardada", Toast.LENGTH_SHORT).show()
             view.findNavController().popBackStack(R.id.home2, false)
         } else {
-            Toast.makeText(addTareaView.context, "Por favor, introduce el nombre de la asignatura", Toast.LENGTH_SHORT).show()
+            Toast.makeText(addTareaView.context, "Por favor, introduce el nombre de la asignatura y su tarea", Toast.LENGTH_SHORT).show()
         }
+
     }
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.clear()
